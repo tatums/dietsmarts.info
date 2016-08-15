@@ -1,0 +1,51 @@
+---
+AWSTemplateFormatVersion: '2010-09-09'
+Description: The AWS CloudFormation template
+Resources:
+
+  RootS3Bucket:
+    Type: AWS::S3::Bucket
+    Properties:
+      BucketName: dietsmarts.info
+      WebsiteConfiguration:
+        RedirectAllRequestsTo:
+          HostName: www.dietsmarts.info
+
+  S3Bucket:
+    Type: AWS::S3::Bucket
+    Properties:
+      AccessControl: PublicRead
+      BucketName: www.dietsmarts.info
+      WebsiteConfiguration:
+        IndexDocument: index.html
+        ErrorDocument: error.html
+      CorsConfiguration:
+        CorsRules:
+        - AllowedHeaders:
+          - "*"
+          AllowedMethods:
+          - GET
+          AllowedOrigins:
+          - "*"
+          ExposedHeaders:
+          - Date
+          Id: myCORSRuleId1
+          MaxAge: '3600'
+
+  S3BucketPolicy:
+    Type: AWS::S3::BucketPolicy
+    Properties:
+      Bucket:
+        Ref: S3Bucket
+      PolicyDocument:
+        Statement:
+        - Action:
+          - s3:GetObject
+          Effect: Allow
+          Resource:
+            Fn::Join:
+            - ''
+            - - 'arn:aws:s3:::'
+              - Ref: S3Bucket
+              - "/*"
+          Principal: "*"

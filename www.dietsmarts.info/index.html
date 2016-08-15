@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Hi World</title>
+    <script src="https://sdk.amazonaws.com/js/aws-sdk-2.5.0.min.js"></script>
+  </head>
+
+  <body>
+    Hi world!
+
+    <div id="status"></div>
+    <ul id="objects"></ul>
+
+
+    <script type="text/javascript">
+
+      AWS.config.region = 'us-east-1'; // Region
+
+      AWS.config.credentials = new AWS.CognitoIdentityCredentials({
+        IdentityPoolId: 'us-east-1:e7e826dc-f8ae-4a99-9e57-ca95b80495b1',
+      });
+
+      var bucket = new AWS.S3({params: {Bucket: 'info-dietsmarts-info'}});
+
+      bucket.getObject({ Key: 'index.html' }, function(err, data) {
+        if (err) {
+          console.log(err, err.stack)
+        } else {
+          console.log(JSON.parse(data.Body.toString()))
+        }
+      });
+
+
+
+
+//bucket.listObjects(function (err, data) {
+//  if (err) {
+//    document.getElementById('status').innerHTML =
+//      'Could not load objects from S3'+ err;
+//  } else {
+//    document.getElementById('status').innerHTML =
+//      'Loaded ' + data.Contents.length + ' items from S3';
+//    for (var i = 0; i < data.Contents.length; i++) {
+//      document.getElementById('objects').innerHTML +=
+//        '<li>' + data.Contents[i].Key + '</li>';
+//    }
+//  }
+//});
+
+      //var s3 = new AWS.S3();
+
+      //s3.listObjects({
+      //  Bucket: 'admin-dietsmarts-info'
+      //}, function(err, data) {
+      //  if (err) console.log(err, err.stack); // an error occurred
+      //  else     console.log(data);           // successful response
+      //});
+
+    </script>
+
+  </body>
+
+</html>
