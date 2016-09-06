@@ -5,6 +5,10 @@ layout: layout.html
 ---
 ## Hello World!!!
 
-* testing
+```javascript
+function (a, b) {
+  return a + b
+}
+```
 
 <a href="/posts/first-post/index.html">First post</a>
