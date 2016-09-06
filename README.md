@@ -1,3 +1,19 @@
-ruby -ryaml -rjson -e 'puts YAML.load(ARGF)' < cl.yaml
+Any changes made to the markdown files in
+`metalsmith-site/src/` will automatically
+be converted to HTML files and uploaded to
+the s3 bucket in the cloudformation template.
 
-stack=www-dietsmarts-info; aws cloudformation create-stack --stack-name $stack --template-body file://foo.json --capabilities CAPABILITY_IAM && aws cloudformation wait stack-create-complete --stack-name $stack
+## create the stack
+
+```
+$ ./stack/scripts/create.sh
+```
+
+Get the AWS keys from the cloudformation output
+
+* Update the SNS github hook
+* update `lambda/config.json` with keys
+
+
+## TODO
+- [ ] Most of the dirs are hardcoded. Make it more flexible
