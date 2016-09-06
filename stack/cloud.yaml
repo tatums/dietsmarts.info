@@ -101,7 +101,7 @@ Resources:
         - "-"
         - - Ref: AWS::StackName
           - publishLambda
-      Handler: index.handler
+      Handler: lambda/index.handler
       Role:
         Fn::GetAtt:
         - IamRoleLambda
