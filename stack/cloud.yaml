@@ -109,6 +109,8 @@ Resources:
       Code:
         ZipFile: 'exports.handler = function(event, context, cb) { return cb(null, {message:''Hello World''}); };'
       Runtime: nodejs4.3
+      MemorySize: 512
+      Timeout: 20
 
   IamRoleLambda:
     Type: AWS::IAM::Role
