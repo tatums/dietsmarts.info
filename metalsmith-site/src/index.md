@@ -5,4 +5,4 @@ layout: layout.html
 ---
 ## Hello World!!!
 
-<a href="/posts/first-post/index.html">First post</a>
+<a href="/posts/first-post/first-post.html">First post</a>
