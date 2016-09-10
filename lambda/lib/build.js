@@ -4,7 +4,7 @@ var layouts     = require('metalsmith-layouts');
 
 module.exports.run = function() {
 
-  const sourcePath = '/tmp/dietsmarts.info-master/metalsmith-site/src'
+  const sourcePath = '/tmp/dietsmarts.info-master/site/src'
 
   return new Promise(function (resolve, reject) {
     Metalsmith(__dirname)
@@ -18,7 +18,7 @@ module.exports.run = function() {
       .use(markdown())
       .use(layouts({
         engine: 'handlebars',
-        directory: "/tmp/dietsmarts.info-master/metalsmith-site/layouts"
+        directory: "/tmp/dietsmarts.info-master/site/layouts"
       }))
       .build(function(err, files) {
         if (err) {
