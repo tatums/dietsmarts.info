@@ -1,7 +1,7 @@
 Any changes made to the markdown files in
-`metalsmith-site/src/` will automatically
-be converted to HTML files and uploaded to
-the s3 bucket in the cloudformation template.
+`site/src/` will automatically be converted
+to HTML files and uploaded to the s3 bucket
+in the cloudformation template.
 
 ## create the stack
 
