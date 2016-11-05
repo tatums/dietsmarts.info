@@ -4,8 +4,7 @@ description: another hello world
 layout: layout.html
 published: true
 ---
-## Hello Worldzz!!!
-
+## Hello World!!!
 
 <a href="/posts/first-post.html">First post</a>
 
